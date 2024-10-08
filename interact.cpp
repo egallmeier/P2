@@ -13,7 +13,7 @@
 #include "binhash.hpp"
 
 /* Define this to use the bucketing version of the code */
-/* #define USE_BUCKETING */
+#define USE_BUCKETING 
 
 /*@T
  * \subsection{Density computations}
@@ -60,6 +60,27 @@ void compute_density(sim_state_t* s, sim_param_t* params)
     // Accumulate density info
 #ifdef USE_BUCKETING
     /* BEGIN TASK */
+    // here instead of looping through every other particle, loop through each bucket
+    for (int i = 0; i < n; ++i) {
+        particle_t* pi = s->part+i;
+	unsigned* buckets = new unsigned[27](); // initialize?
+	unsigned num_neighbors = particle_neighborhood(buckets, pi, h);
+        for (int j = 0; j < num_neighbors; ++j) {
+	    particle_t* pneighbor = s->hash[buckets[j]];
+	    while (pneighbor != nullptr) {
+	        int neighboridx = pneighbor - s->part;
+		if (neighboridx > i) { // only consider particles coming after pi
+		    if (neighboridx > i) {
+		        update_density(pi,pneighbor,h2,C);
+		    }
+		    pneighbor = pneighbor->next;
+		}
+
+	    } 
+		    
+	}
+
+    }
     /* END TASK */
 #else
     for (int i = 0; i < n; ++i) {
@@ -117,7 +138,7 @@ void update_forces(particle_t* pi, particle_t* pj, float h2,
     }
 }
 
-void compute_accel(sim_state_t* state, sim_param_t* params)
+void compute_accel(sim_state_t* s, sim_param_t* params)
 {
     // Unpack basic parameters
     const float h    = params->h;
@@ -125,19 +146,19 @@ void compute_accel(sim_state_t* state, sim_param_t* params)
     const float k    = params->k;
     const float mu   = params->mu;
     const float g    = params->g;
-    const float mass = state->mass;
+    const float mass = s->mass;
     const float h2   = h*h;
 
     // Unpack system state
-    particle_t* p = state->part;
-    particle_t** hash = state->hash;
-    int n = state->n;
+    particle_t* p = s->part;
+    particle_t** hash = s->hash;
+    int n = s->n;
 
     // Rehash the particles
-    hash_particles(state, h);
+    hash_particles(s, h);
 
     // Compute density and color
-    compute_density(state, params);
+    compute_density(s, params);
 
     // Start with gravity and surface forces
     for (int i = 0; i < n; ++i)
@@ -150,8 +171,25 @@ void compute_accel(sim_state_t* state, sim_param_t* params)
 
     // Accumulate forces
 #ifdef USE_BUCKETING
-    /* BEGIN TASK */
-    /* END TASK */
+     for (int i = 0; i < n; ++i) {
+        particle_t* pi = s->part+i;
+	unsigned* buckets = new unsigned[27](); // initialize?
+	unsigned num_neighbors = particle_neighborhood(buckets, pi, h);
+        for (int j = 0; j < num_neighbors; ++j) {
+	    particle_t* pneighbor = s->hash[buckets[j]];
+	    while (pneighbor != nullptr) {
+	        int neighboridx = pneighbor - s->part;
+		if (neighboridx > i) { // only consider particles coming after pi
+		    if (neighboridx > i) {
+		        update_forces(pi, pneighbor, h2, rho0, C0, Cp, Cv);
+		    }
+		    pneighbor = pneighbor->next;
+		}
+	    } 
+	    delete[] buckets;
+	}
+    }
+  
 #else
     for (int i = 0; i < n; ++i) {
         particle_t* pi = p+i;
