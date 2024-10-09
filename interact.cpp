@@ -14,7 +14,7 @@
 #include "binhash.hpp"
 
 /* Define this to use the bucketing version of the code */
-#define USE_BUCKETING 
+//#define USE_BUCKETING 
 
 /*@T
  * \subsection{Density computations}
@@ -66,20 +66,20 @@ void compute_density(sim_state_t* s, sim_param_t* params)
         particle_t* pi = s->part+i;
 	unsigned* buckets = new unsigned[27](); // initialize?
 	unsigned num_neighbors = particle_neighborhood(buckets, pi, h);
-        //std::cout << "Idx: " << i << " num_neighbors: " << num_neighbors << std::endl;
+    //std::cout << "Idx: " << i << " num_neighbors: " << num_neighbors << std::endl;
 	//std::cout << "total number of particles n = " << n <<std::endl;
 	for (int j = 0; j < num_neighbors; ++j) {
 	    particle_t* pneighbor = s->hash[buckets[j]];
 	    //std::cout << "neighbor pointer: " << pneighbor <<std::endl;
-	    while (pneighbor != NULL) {
+	    while (pneighbor != nullptr) {
 	        int neighboridx = pneighbor - s->part;
 		//std::cout << "neighbor idx: " << neighboridx <<std::ends;
-		if (neighboridx > i) { // only consider particles coming after pi
-		    if (neighboridx > i) {
-		        update_density(pi,pneighbor,h2,C);
-		    }
+		// only consider particles coming after pi
+		    if (pi < pneighbor) { //neighboridx > i) {
+		       update_density(pi,pneighbor,h2,C);
+	        }
 		    
-		}
+		
 		pneighbor = pneighbor->next;
 
 	    } 
@@ -187,10 +187,10 @@ void compute_accel(sim_state_t* s, sim_param_t* params)
 	unsigned num_neighbors = particle_neighborhood(buckets, pi, h);
         for (int j = 0; j < num_neighbors; ++j) {
 	    particle_t* pneighbor = s->hash[buckets[j]];
-	    while (pneighbor != NULL) {
+	    while (pneighbor != nullptr) {
 	        int neighboridx = pneighbor - s->part;
 		if (neighboridx > i) { // only consider particles coming after pi
-		    if (neighboridx > i) {
+		    if (pi < pneighbor) { //neighboridx > i) {
 		        update_forces(pi, pneighbor, h2, rho0, C0, Cp, Cv);
 		    }
 		    
