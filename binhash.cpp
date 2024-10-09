@@ -1,5 +1,5 @@
 #include <string.h>
-
+#include <iostream>
 #include "zmorton.hpp"
 #include "binhash.hpp"
 
@@ -35,11 +35,11 @@ unsigned particle_neighborhood(unsigned* buckets, particle_t* p, float h)
     unsigned iz = p->x[2]/h;
 
     int num_neighbors = 0;
-    for (int i = -1; i < 1 ; ++i) 
+    for (int i = -1; i <= 1 ; ++i) 
     { 
-	for (int j = -1; j < 1; ++j) 
+	for (int j = -1; j <= 1; ++j) 
 	{
-	    for (int k = -1; k < 1; ++k) 
+	    for (int k = -1; k <= 1; ++k) 
 	    {
 		unsigned bucket_hash = zm_encode((ix + i) & HASH_MASK,
 						 (iy + j) & HASH_MASK,

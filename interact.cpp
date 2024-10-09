@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <assert.h>
+#include <iostream>
 
 #include "vec3.hpp"
 #include "zmorton.hpp"
@@ -60,29 +61,37 @@ void compute_density(sim_state_t* s, sim_param_t* params)
     // Accumulate density info
 #ifdef USE_BUCKETING
     /* BEGIN TASK */
-    // here instead of looping through every other particle, loop through each bucket
+    //std::cout << "bucketing" << std::endl;
     for (int i = 0; i < n; ++i) {
         particle_t* pi = s->part+i;
 	unsigned* buckets = new unsigned[27](); // initialize?
 	unsigned num_neighbors = particle_neighborhood(buckets, pi, h);
-        for (int j = 0; j < num_neighbors; ++j) {
+        //std::cout << "Idx: " << i << " num_neighbors: " << num_neighbors << std::endl;
+	//std::cout << "total number of particles n = " << n <<std::endl;
+	for (int j = 0; j < num_neighbors; ++j) {
 	    particle_t* pneighbor = s->hash[buckets[j]];
-	    while (pneighbor != nullptr) {
+	    //std::cout << "neighbor pointer: " << pneighbor <<std::endl;
+	    while (pneighbor != NULL) {
 	        int neighboridx = pneighbor - s->part;
+		//std::cout << "neighbor idx: " << neighboridx <<std::ends;
 		if (neighboridx > i) { // only consider particles coming after pi
 		    if (neighboridx > i) {
 		        update_density(pi,pneighbor,h2,C);
 		    }
-		    pneighbor = pneighbor->next;
+		    
 		}
+		pneighbor = pneighbor->next;
 
 	    } 
 		    
 	}
+        delete[] buckets;
+	buckets = nullptr;
 
     }
     /* END TASK */
 #else
+    //std::cout << "not bucketing" << std::ends;
     for (int i = 0; i < n; ++i) {
         particle_t* pi = s->part+i;
         pi->rho += ( 315.0/64.0/M_PI ) * s->mass / h3;
@@ -171,25 +180,29 @@ void compute_accel(sim_state_t* s, sim_param_t* params)
 
     // Accumulate forces
 #ifdef USE_BUCKETING
-     for (int i = 0; i < n; ++i) {
+    //std::cout << "bucketing" << std::ends;
+    for (int i = 0; i < n; ++i) {
         particle_t* pi = s->part+i;
 	unsigned* buckets = new unsigned[27](); // initialize?
 	unsigned num_neighbors = particle_neighborhood(buckets, pi, h);
         for (int j = 0; j < num_neighbors; ++j) {
 	    particle_t* pneighbor = s->hash[buckets[j]];
-	    while (pneighbor != nullptr) {
+	    while (pneighbor != NULL) {
 	        int neighboridx = pneighbor - s->part;
 		if (neighboridx > i) { // only consider particles coming after pi
 		    if (neighboridx > i) {
 		        update_forces(pi, pneighbor, h2, rho0, C0, Cp, Cv);
 		    }
-		    pneighbor = pneighbor->next;
+		    
 		}
+                pneighbor = pneighbor->next;
 	    } 
-	    delete[] buckets;
+	  
+	
 	}
-    }
-  
+        delete[] buckets;
+        buckets = nullptr;
+    }  
 #else
     for (int i = 0; i < n; ++i) {
         particle_t* pi = p+i;
@@ -200,4 +213,4 @@ void compute_accel(sim_state_t* s, sim_param_t* params)
     }
 #endif
 }
-
+ 
