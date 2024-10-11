@@ -66,14 +66,9 @@ void hash_particles(sim_state_t* s, float h)
     for (int i =0; i < s->n; ++i)
     { 
 	    particle_t* p = &s->part[i];
-        std::cout << "particle at i = " << i << "is " << p << std::endl; 
         unsigned bucket_hash = particle_bucket(p,h);
-        std::cout << "bucket hash: " << bucket_hash << std::endl;
 	    p->next = s->hash[bucket_hash]; // we don't know why this worked
-        std::cout << p->next << std::endl;
-	    s->hash[bucket_hash] = p;
-        std::cout << " p : " << p << std::endl;
-		
+        s->hash[bucket_hash] = p;
     }
     /* END TASK */
 }
