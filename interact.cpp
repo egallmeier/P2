@@ -38,6 +38,7 @@ void update_density(particle_t* pi, particle_t* pj, float h2, float C)
     if (z > 0) {
         float rho_ij = C*z*z*z;
         pi->rho += rho_ij;
+        #pragma omp atomic 
         pj->rho += rho_ij;
     }
 }
@@ -61,6 +62,7 @@ void compute_density(sim_state_t* s, sim_param_t* params)
     // Accumulate density info
 #ifdef USE_BUCKETING
     /* BEGIN TASK */
+    #pragma omp parallel for
     for (int i = 0; i < n; ++i) {
         particle_t* pi = s->part+i;
 	    pi->rho += ( 315.0/64.0/M_PI ) * s->mass / h3;
@@ -69,8 +71,8 @@ void compute_density(sim_state_t* s, sim_param_t* params)
 	    for (int j = 0; j < num_neighbors; ++j) {
 	        particle_t* pneighbor = s->hash[buckets[j]];
 	        while (pneighbor != nullptr) {
-	            int neighboridx = pneighbor - s->part;
-		        if (pi < pneighbor) { //neighboridx > i) {
+	            //int neighboridx = pneighbor - s->part;
+		        if (pi < pneighbor) {//pi < pneighbor) { //neighboridx > i) {
 		            update_density(pi,pneighbor,h2,C);
 	            }
 		    
@@ -133,10 +135,12 @@ void update_forces(particle_t* pi, particle_t* pj, float h2,
 
         // Equal and opposite pressure forces
         vec3_saxpy(pi->a,  wp, dx);
+        
         vec3_saxpy(pj->a, -wp, dx);
         
         // Equal and opposite viscosity forces
         vec3_saxpy(pi->a,  wv, dv);
+       
         vec3_saxpy(pj->a, -wv, dv);
     }
 }
@@ -174,6 +178,7 @@ void compute_accel(sim_state_t* s, sim_param_t* params)
 
     // Accumulate forces
 #ifdef USE_BUCKETING
+    #pragma omp parallel for
     for (int i = 0; i < n; ++i) {
         particle_t* pi = s->part+i;
 	    unsigned* buckets = new unsigned[27](); // initialize?
@@ -181,14 +186,11 @@ void compute_accel(sim_state_t* s, sim_param_t* params)
         for (int j = 0; j < num_neighbors; ++j) {
 	        particle_t* pneighbor = s->hash[buckets[j]];
 	    while (pneighbor != nullptr) {
-	        int neighboridx = pneighbor - s->part;
-		if (neighboridx > i) { // only consider particles coming after pi
-		    if (pi < pneighbor) { //neighboridx > i) {
+	        //int neighboridx = pneighbor - s->part;
+		    if (pi < pneighbor) { // only consider particles coming after pi
 		        update_forces(pi, pneighbor, h2, rho0, C0, Cp, Cv);
 		    }
-		    
-		}
-                pneighbor = pneighbor->next;
+            pneighbor = pneighbor->next;
 	    } 
 	  
 	
