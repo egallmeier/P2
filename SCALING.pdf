@@ -1,0 +1,633 @@
+%PDF-1.3
+%·¾­ª
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [ 6 0 R 9 0 R ]
+/Count 2
+>>
+endobj
+3 0 obj
+<<
+/Producer (Haru Free PDF Library 2.2.0)
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /StandardEncoding
+>>
+endobj
+6 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 1000 770 ]
+/Contents 7 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+7 0 obj
+<<
+/Length 8 0 R
+>>
+stream
+0 0 0 rg
+0 0 0 RG
+0 0 0 RG
+0 0 0 rg
+1 0 0 rg
+0.95 0.95 0.95 rg
+0 0 1000 770 re
+f
+/F1 10 Tf
+0.5 0.5 0.5 RG
+0.25 w
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+50 36 99 685.29413 re
+B
+0.5 0.5 0.5 RG
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+71 26 Td
+(zm_part1by2) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+159 36 99 238.85547 re
+B
+0.5 0.5 0.5 RG
+1 w
+208.5 36 m
+208.5 26 l
+S
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+171 16 Td
+(compute_density) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+268 36 99 231.84616 re
+B
+0.5 0.5 0.5 RG
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+284 26 Td
+(compute_accel) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+377 36 99 155.5526 re
+B
+0.5 0.5 0.5 RG
+1 w
+426.5 36 m
+426.5 26 l
+S
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+393 16 Td
+(update_density) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+486 36 99 140.45564 re
+B
+0.5 0.5 0.5 RG
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+504 26 Td
+(update_forces) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+595 36 99 140.45564 re
+B
+0.5 0.5 0.5 RG
+1 w
+644.5 36 m
+644.5 26 l
+S
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+622 16 Td
+(vec3_len2) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+704 36 99 109.18336 re
+B
+0.5 0.5 0.5 RG
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+730 26 Td
+(vec3_dist2) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+813 36 99 91.66011 re
+B
+0.5 0.5 0.5 RG
+1 w
+862.5 36 m
+862.5 26 l
+S
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+828.5 16 Td
+(GOMP_parallel) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+0.5 w
+0 0 0 RG
+0 0 0 rg
+.(-*,( 36 m
+.(-*,( 735 l
+S
+0 0 0 RG
+0 0 0 rg
+922 36 m
+922 735 l
+S
+0 0 0 RG
+0 0 0 rg
+.(-*,( 135.85715 m
+.(-*,( 135.85715 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+21 130.85715 Td
+(370) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 235.71428 m
+.(-*,( 235.71428 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+21 230.71428 Td
+(741) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 335.57144 m
+.(-*,( 335.57144 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 330.57144 Td
+(1,111) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 435.42856 m
+.(-*,( 435.42856 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 430.42856 Td
+(1,482) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 535.28571 m
+.(-*,( 535.28571 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 530.28571 Td
+(1,852) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 635.14288 m
+.(-*,( 635.14288 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 630.14288 Td
+(2,222) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 735 m
+.(-*,( 735 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 730 Td
+(2,593) Tj
+ET
+0 0 0 rg
+0 0 0 RG
+BT
+32 36 Td
+(0) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 36 m
+.(-*,( 36 l
+S
+/F2 22 Tf
+/F2 22 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+312 743 Td
+(Routines by Number of Samples) Tj
+ET
+/F1 10 Tf
+0.25 w
+0.4078 0.7372 0.2117 rg
+0 0 0 RG
+0.25 w
+925 358 10 10 re
+B
+0 0 0 rg
+0 0 0 RG
+BT
+938 365.5 Td
+(000000.ap2) Tj
+ET
+/F1 8 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+938 355.5 Td
+(\0501 pes,256 ths\051) Tj
+ET
+/F1 10 Tf
+
+endstream
+endobj
+8 0 obj
+2644
+endobj
+9 0 obj
+<<
+/Type /Page
+/MediaBox [ 0 0 1000 770 ]
+/Contents 10 0 R
+/Resources <<
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+/Font <<
+/F1 4 0 R
+/F2 5 0 R
+>>
+>>
+/Parent 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Length 11 0 R
+>>
+stream
+0 0 0 rg
+0 0 0 RG
+0 0 0 RG
+0 0 0 rg
+1 0 0 rg
+0.95 0.95 0.95 rg
+0 0 1000 770 re
+f
+/F1 10 Tf
+0.5 0.5 0.5 RG
+0.25 w
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+45 36 99.625 550.46252 re
+B
+0.5 0.5 0.5 RG
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+66.3125 26 Td
+(zm_part1by2) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+154.625 36 99.625 192.22501 re
+B
+0.5 0.5 0.5 RG
+1 w
+204.4375 36 m
+204.4375 26 l
+S
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+166.9375 16 Td
+(compute_density) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+264.25 36 99.625 186.9825 re
+B
+0.5 0.5 0.5 RG
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+280.5625 26 Td
+(compute_accel) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+373.875 36 99.625 125.82 re
+B
+0.5 0.5 0.5 RG
+1 w
+423.6875 36 m
+423.6875 26 l
+S
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+390.1875 16 Td
+(update_density) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+483.5 36 99.625 113.5875 re
+B
+0.5 0.5 0.5 RG
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+501.8125 26 Td
+(update_forces) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+593.125 36 99.625 113.5875 re
+B
+0.5 0.5 0.5 RG
+1 w
+642.9375 36 m
+642.9375 26 l
+S
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+620.4375 16 Td
+(vec3_len2) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+702.75 36 99.625 87.375 re
+B
+0.5 0.5 0.5 RG
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+729.0625 26 Td
+(vec3_dist2) Tj
+ET
+0.5 0.5 0.5 RG
+0.25 w
+0.4078 0.7372 0.2117 rg
+812.375 36 99.625 73.395 re
+B
+0.5 0.5 0.5 RG
+1 w
+862.1875 36 m
+862.1875 26 l
+S
+/F1 10 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+828.1875 16 Td
+(GOMP_parallel) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+0.5 w
+0 0 0 RG
+0 0 0 rg
+.(-*,( 36 m
+.(-*,( 735 l
+S
+0 0 0 RG
+0 0 0 rg
+922 36 m
+922 735 l
+S
+0 0 0 RG
+0 0 0 rg
+.(-*,( 135.85715 m
+.(-*,( 135.85715 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+18 130.85715 Td
+(6\045) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 235.71428 m
+.(-*,( 235.71428 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 230.71428 Td
+(11\045) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 335.57144 m
+.(-*,( 335.57144 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 330.57144 Td
+(17\045) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 435.42856 m
+.(-*,( 435.42856 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 430.42856 Td
+(23\045) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 535.28571 m
+.(-*,( 535.28571 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 530.28571 Td
+(29\045) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 635.14288 m
+.(-*,( 635.14288 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 630.14288 Td
+(34\045) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 735 m
+.(-*,( 735 l
+S
+0 0 0 rg
+0 0 0 RG
+BT
+12 730 Td
+(40\045) Tj
+ET
+0 0 0 rg
+0 0 0 RG
+BT
+18 36 Td
+(0\045) Tj
+ET
+0 0 0 RG
+0 0 0 rg
+.(-*,( 36 m
+.(-*,( 36 l
+S
+/F2 22 Tf
+/F2 22 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+310 743 Td
+(Routines by Percent of Samples) Tj
+ET
+/F1 10 Tf
+0.25 w
+0.4078 0.7372 0.2117 rg
+0 0 0 RG
+0.25 w
+925 358 10 10 re
+B
+0 0 0 rg
+0 0 0 RG
+BT
+938 365.5 Td
+(000000.ap2) Tj
+ET
+/F1 8 Tf
+0 0 0 rg
+0 0 0 RG
+BT
+938 355.5 Td
+(\0501 pes,256 ths\051) Tj
+ET
+/F1 10 Tf
+
+endstream
+endobj
+11 0 obj
+2767
+endobj
+xref
+0 12
+0000000000 65535 f
+0000000015 00000 n
+0000000064 00000 n
+0000000129 00000 n
+0000000190 00000 n
+0000000288 00000 n
+0000000391 00000 n
+0000000578 00000 n
+0000003275 00000 n
+0000003295 00000 n
+0000003483 00000 n
+0000006305 00000 n
+trailer
+<<
+/Root 1 0 R
+/Info 3 0 R
+/Size 12
+>>
+startxref
+6326
+%%EOF

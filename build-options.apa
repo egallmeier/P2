@@ -1,0 +1,87 @@
+#  You can edit this file, if desired, and use it
+#  to reinstrument the program for tracing like this:
+#
+#           pat_build -O ./build-options.apa
+#
+#  These suggested trace options are based on data from:
+#
+#    /global/u2/e/eg542/P2/sph.x+pat+557154-1868485011s/ap2-files/000000.ap2
+
+# ----------------------------------------------------------------------
+
+#	Collect the default PERFCTR group.
+
+  -Drtenv=PAT_RT_PERFCTR=default
+
+#	Alternatively, energy counters may be added to the default
+#	list by commenting out the line above and enabling the
+#	line below. Note that this may significantly increase the
+#	runtime overhead for high trace counts. The parentheses
+#	in the syntax below denote counters that are not available
+#	on all platforms.
+
+#  -Drtenv=PAT_RT_PERFCTR=default,(PM_ENERGY:NODE),(PM_ENERGY:ACC)
+
+# ----------------------------------------------------------------------
+
+#	Libraries to trace.
+
+  -g mpi
+
+# ----------------------------------------------------------------------
+
+
+#	User-defined functions to trace, sorted by % of samples.
+
+#	The way these functions are filtered can be controlled with
+#	pat_report options (values used for this file are shown):
+#
+#	-s apa_max_count=200	No more than 200 functions are listed.
+#	-s apa_min_size=800	Commented out if text size < 800 bytes.
+#	-s apa_min_pct=1	Commented out if it had < 1% of samples.
+#	-s apa_max_cum_pct=90	Commented out after cumulative 90%.
+
+#	Local functions are listed for completeness, but cannot be traced.
+
+  -w  # Enable tracing of user-defined functions.
+      # Note: -u should NOT be specified as an additional option.
+
+# 31.51% 87 bytes    zm_part1by2
+#         -T _Z11zm_part1by2j
+
+# 10.98% 580 bytes    compute_density
+#         -T _Z15compute_densityP11sim_state_tP11sim_param_t
+
+# 10.66% 708 bytes    compute_accel
+#         -T _Z13compute_accelP11sim_state_tP11sim_param_t
+
+# 7.15% 179 bytes    update_density
+#         -T _Z14update_densityP10particle_tS0_ff
+
+# 6.46% 473 bytes    update_forces
+#         -T _Z13update_forcesP10particle_tS0_fffff
+
+# 6.46% 94 bytes    vec3_len2
+#         -T _Z9vec3_len2Pf
+
+# 5.02% 143 bytes    vec3_dist2
+#         -T _Z10vec3_dist2PfS_
+
+# 2.91% 234 bytes    particle_neighborhood
+#         -T _Z21particle_neighborhoodPjP10particle_tf
+
+# 2.81% 178 bytes    vec3_saxpy
+#         -T _Z10vec3_saxpyPffS_
+
+# 2.75% 67 bytes    zm_encode
+#         -T _Z9zm_encodejjj
+
+# 2.26% 127 bytes    vec3_diff
+#         -T _Z9vec3_diffPfS_S_
+
+
+# ----------------------------------------------------------------------
+
+-o sph.x+apa # New instrumented program.
+
+-U /global/u2/e/eg542/P2/sph.x # Original program.
