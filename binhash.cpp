@@ -56,13 +56,11 @@ unsigned particle_neighborhood(unsigned* buckets, particle_t* p, float h)
 
 void hash_particles(sim_state_t* s, float h)
 {
-    #pragma omp parallel for
     for (int i = 0; i < STATE_HASH_SIZE; ++i) {
         s->hash[i] = nullptr; 
     }
 
     // loop through each particle and add to bin
-    #pragma omp parallel for
     for (int i =0; i < s->n; ++i)
     { 
 	    particle_t* p = &s->part[i];
