@@ -154,7 +154,7 @@ int main(int argc, char** argv)
     float dt    = params.dt;
     float h     = params.h;
     int n       = state->n;
-    int relocate_freq = 10;
+    int relocate_freq = 0;
     int relocate_iter = 0;
 
     double t_start = omp_get_wtime();

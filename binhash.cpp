@@ -74,21 +74,23 @@ void hash_particles(sim_state_t* s, float h)
 void particles_relocate(sim_state_t* s, float h)
 { 
     int n = s->n;
-    int j = 0; 
-    particle_t* pj = s->part; //first pointer in particles 
+    int j = 0; //iteration for linked list of particles
+    particle_t* pold = s->part; //first pointer in particles 
     particle_t** hash = s->hash;
 
-    particle_t* p_n = (particle_t*) calloc(n, sizeof(particle_t));
+    // new memory block
+    particle_t* pnew = (particle_t*) calloc(n, sizeof(particle_t));
 
+    // loop through hash buckets and assign old pointer to new pointer location
     for (int i = 0; i < HASH_SIZE; ++i) {
-        pj = hash[i];
-        while(pj) {
-            memcpy(p_n+j, pj, sizeof(particle_t));
-            pj = pj-> next;
+        pold = hash[i];
+        while(pold) {
+            memcpy(pnew+j, pold, sizeof(particle_t));
+            pold = pold->next;
             ++j;
         }
     }
     free(s->part); 
-    s->part = p_n;
+    s->part = pnew;
 }
 
