@@ -70,3 +70,25 @@ void hash_particles(sim_state_t* s, float h)
     }
     /* END TASK */
 }
+
+void particles_relocate(sim_state_t* s, float h)
+{ 
+    int n = s->n;
+    int j = 0; 
+    particle_t* pj = s->part; //first pointer in particles 
+    particle_t** hash = s->hash;
+
+    particle_t* p_n = (particle_t*) calloc(n, sizeof(particle_t));
+
+    for (int i = 0; i < HASH_SIZE; ++i) {
+        pj = hash[i];
+        while(pj) {
+            memcpy(p_n+j, pj, sizeof(particle_t));
+            pj = pj-> next;
+            ++j;
+        }
+    }
+    free(s->part); 
+    s->part = p_n;
+}
+

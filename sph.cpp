@@ -152,7 +152,10 @@ int main(int argc, char** argv)
     int nframes = params.nframes;
     int npframe = params.npframe;
     float dt    = params.dt;
+    float h     = params.h;
     int n       = state->n;
+    int relocate_freq = 10;
+    int relocate_iter = 0;
 
     double t_start = omp_get_wtime();
     //write_header(fp, n);
@@ -166,6 +169,11 @@ int main(int argc, char** argv)
             compute_accel(state, &params);
             leapfrog_step(state, dt);
             check_state(state);
+            if (relocate_iter == relocate_freq) {
+                particles_relocate(state,h);
+                relocate_iter = 0;
+            }
+            else ++relocate_iter;
         }
         printf("Frame: %d of %d - %2.1f%%\n",frame, nframes, 
                100*(float)frame/nframes);
