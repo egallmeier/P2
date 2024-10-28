@@ -62,7 +62,7 @@ void compute_density(sim_state_t* s, sim_param_t* params)
     // Accumulate density info
 #ifdef USE_BUCKETING
     /* BEGIN TASK */
-    //#pragma omp parallel for
+    #pragma omp parallel for
     for (int i = 0; i < n; ++i) {
         particle_t* pi = s->part+i;
 	    pi->rho += ( 315.0/64.0/M_PI ) * s->mass / h3;
@@ -136,12 +136,12 @@ void update_forces(particle_t* pi, particle_t* pj, float h2,
         // Equal and opposite pressure forces
         vec3_saxpy(pi->a,  wp, dx);
         
-        vec3_saxpy(pj->a, -wp, dx);
+        vec3_saxpyatomic(pj->a, -wp, dx);
         
         // Equal and opposite viscosity forces
         vec3_saxpy(pi->a,  wv, dv);
        
-        vec3_saxpy(pj->a, -wv, dv);
+        vec3_saxpyatomic(pj->a, -wv, dv);
     }
 }
 
@@ -178,7 +178,7 @@ void compute_accel(sim_state_t* s, sim_param_t* params)
 
     // Accumulate forces
 #ifdef USE_BUCKETING
-    //#pragma omp parallel for schedule(dynamic)
+    #pragma omp parallel for
     for (int i = 0; i < n; ++i) {
         particle_t* pi = s->part+i;
 	    unsigned* buckets = new unsigned[27](); // initialize?

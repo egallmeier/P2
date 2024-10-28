@@ -47,8 +47,15 @@ inline float vec3_len2(float* a)
 {
     return a[0]*a[0] + a[1]*a[1] + a[2]*a[2];
 }
-
 inline void vec3_saxpy(float* result, float alpha, float* v)
+{
+    result[0] += alpha*v[0];
+    result[1] += alpha*v[1];
+    result[2] += alpha*v[2];
+}
+
+
+inline void vec3_saxpyatomic(float* result, float alpha, float* v)
 {
     #pragma omp atomic
     result[0] += alpha*v[0];
